@@ -1,7 +1,7 @@
 # Soc-analyst-runbook
-SOC Analyst Runbook covering 10 alert types — phishing, compromised accounts, MFA fatigue, ransomware, and more. Each section includes triage steps, IOCs, containment actions, and escalation criteria. Built from hands-on experience with CrowdStrike, Microsoft Sentinel, Entra ID, Checkpoint Email Security, and M365.
-
-A practical triage runbook for common SOC alert types. This is not a copy of vendor documentation — it's a workflow built from real experience handling alerts across CrowdStrike, Microsoft Sentinel, Entra ID, and Microsoft 365. Each section covers how to triage the alert, what to look for, escalation criteria, and containment steps.
+A practical triage runbook covering 10 of the most common SOC alert types. Built from hands-on experience working across CrowdStrike, Microsoft Sentinel, Entra ID, Check Point Harmony, and Microsoft 365 — not copied from vendor docs.
+Each section covers triage steps, IOCs to look for, containment actions, and escalation criteria so you can move fast when an alert fires without second-guessing your next step.
+Alert types covered: Phishing, Compromised Account, MFA Fatigue, Endpoint Malware, Ransomware, Privilege Escalation, Impossible Travel, Suspicious Inbox Forwarding, Brute Force/Password Spray, and Suspicious PowerShell Execution.
 
 ---
 
