@@ -7,8 +7,9 @@ All connection attempts timing out on port 25.
 ## Environment
 - Platform: Microsoft Azure (BackEndDMZ)
 - Mail Relay: Proofpoint Essentials
-- Subnet: VLAN-170-DMZ (10.1.170.0/24)
-- Affected Server: 10.1.170.8
+- Subnet: VLAN-170-DMZ (10.x.x.0/24)
+- Affected Server: [Internal Azure VM IP]
+- Public Egress IP: [Azure Public IP]
 
 ## Symptoms
 - DNS resolution working correctly
@@ -26,7 +27,7 @@ All connection attempts timing out on port 25.
 - Confirmed no Azure Firewall deployed
 - NSG outbound rules verified — port 25 allowed
 - IP flow verify returned "Allowed" on port 25
-- Public IP (145.190.32.20) confirmed attached to NIC
+- Public IP (1**.**0.**.*0) confirmed attached to NIC
 
 ### 3. Network Path
 - Tracert showed traffic dying after first hop
@@ -56,16 +57,14 @@ Proofpoint on port 587 (STARTTLS) instead of port 25.
 - NSG rules cannot override Azure fabric-level port blocks
 - IP flow verify does NOT detect platform-level blocks
 - Port 587 is the correct port for SMTP relay in Azure
-- To lift port 25 block: open Microsoft support ticket under 
-  Subscription Management
 
 ## Commands Used
 # Check egress IP
 Invoke-RestMethod http://ipinfo.io/json
 
 # Test SMTP connectivity
-Test-NetConnection -ComputerName 67.231.154.162 -Port 25 -InformationLevel Detailed
-Test-NetConnection -ComputerName 67.231.154.162 -Port 587 -InformationLevel Detailed
+Test-NetConnection -ComputerName <mail-relay-host> -Port 25 -InformationLevel Detailed
+Test-NetConnection -ComputerName <mail-relay-host> -Port 587 -InformationLevel Detailed
 
 # Trace network path
 tracert -d 67.231.154.162
